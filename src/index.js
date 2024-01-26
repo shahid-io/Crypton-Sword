@@ -1,9 +1,11 @@
-// const express = require('express');
-import express from "express"
-import ServerConfig from "./config/server.config"
+const express = require('express');
+const { ServerConfig } = require('./config');
+const dotenv = require("dotenv");
+dotenv.config();
 
 const app = express();
-const PORT = ServerConfig.PORT;
+console.log(ServerConfig);
+
 // const port = process.argv[3] || 3000;
 
 
@@ -11,6 +13,6 @@ app.get('/api', (req, res) => {
   res.json({ "msg": "Hello world" });
 });
 
-app.listen(PORT, () => {
-  console.log(`http://${ServerConfig.HOST}:${PORT}`);
+app.listen(ServerConfig.PORT, () => {
+  console.log(`http://${ServerConfig.HOST}:${ServerConfig.PORT}`);
 })
